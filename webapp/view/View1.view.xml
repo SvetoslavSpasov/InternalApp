@@ -1,0 +1,63 @@
+<mvc:View controllerName="com.sap.mt.controller.View1" 
+xmlns:html="http://www.w3.org/1999/xhtml" 
+xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+xmlns:custom="com.sap.mt.controls" xmlns:ux3="sap.ui.ux3">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<l:VerticalLayout
+		class="sapUiContentPadding"
+		width="100%">
+		<l:content>
+
+		<custom:HoverButton text="Marcin" hover="test"/>
+			<Input
+				id="productInput"
+				type="Text"
+				placeholder="Enter Product ..."
+				showSuggestion="true"
+				suggestionRows="{/accounts}" 
+				suggest="handleSuggest" >
+
+				<suggestionColumns>						
+					<Column
+						popinDisplay="WithoutHeader" demandPopin="true" minScreenWidth="Tablet"
+						width="10%">
+					</Column>
+					<Column
+						popinDisplay="WithoutHeader" demandPopin="true" minScreenWidth="Tablet"
+						width="10%">
+					</Column>
+				</suggestionColumns>
+				<suggestionRows>
+					<ColumnListItem id="accountSuggestionList">
+						<cells>
+							<Label text="{firstName}">
+								
+							</Label>
+							<Link text="Details" >
+								<tooltip>
+					<ux3:QuickView id="accountQuickViewOverviewFrame2" type="{i18n>ACCOUNT_OVERVIEW}" showActionBar="false" showSeparators="All" width="25rem">
+						<ux3:content>
+							<mvc:XMLView viewName="com.sap.mt.view.AccountQuickView" async="true"/>
+						</ux3:content>
+					</ux3:QuickView>
+				</tooltip>
+							</Link>
+
+						</cells>
+					</ColumnListItem>
+				</suggestionRows>
+			</Input>
+			
+
+		</l:content>
+	</l:VerticalLayout>
+					
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,17 @@
+<mvc:View controllerName="com.sap.mt.controller.View2" 
+xmlns:html="http://www.w3.org/1999/xhtml" 
+xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout"
+xmlns:custom="com.sap.mt.controls" height ="400px">
+	<App  height ="400px">
+		<pages  height ="400px">
+			<Page title="{i18n>title}">
+				<content  height ="400px">
+					<layout:Grid id="detailsViewContainer" defaultSpan="L12 M12 S12" vSpacing="0" hSpacing="0">
+	      		<layout:content height ="400px"/>
+	      	</layout:Grid>
+					
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

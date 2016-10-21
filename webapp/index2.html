@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html id="htmlBody" style="height:100%;overflow:hidden">
+
+
+  <!-- Header section -->
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <script src="../../resources/sap-ui-core.js"
+        id="sap-ui-bootstrap"
+        data-sap-ui-libs="sap.ui.commons,sap.ui.table"
+        data-sap-ui-theme="sap_goldreflection"
+        data-sap-ui-appCacheBuster="false">
+    </script>
+
+    <script src="./js/HanaSmartSearchHelper.js"></script>
+    <script src="./js/HanaSmartSearchCustHelper.js"></script>
+    <script src="./js/HanaSmartSearch.view.js"></script>
+    <script src="./js/HanaSmartSearch.controller.js"></script>
+    <script src="./model/message.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./css/HanaSmartSearch.css">
+
+
+    <script>
+   sap.ui.getCore().attachInit(function() {
+			onInit();
+			});
+			
+        function onInit() {
+          //if (event.origin !== window.location.protocol + '//' + window.location.host) {
+          //    return;
+          //  }
+          
+            var data = configuration;
+            if(data.session){
+              var oModel = new sap.ui.model.json.JSONModel();
+        oModel.setData(data.session);
+        sap.ui.getCore().setModel(oModel, MODEL_SESSION);
+
+            }
+            else if(data.hss){
+        var oModel;
+        //Create all the json models
+        for(var sModelName in data.hss){
+          oModel = new sap.ui.model.json.JSONModel();
+          oModel.setData(data.hss[sModelName]);
+          sap.ui.getCore().setModel(oModel, sModelName);
+        }
+        onInitializeView();
+      }
+        };
+
+        <!-- Function to initialize view -->
+        function onInitializeView() {
+          if (sap.ui.getCore().getConfiguration().getTheme() != 'sap_hcb') {
+            $('body').css('background-color', 'transparent');
+          }
+      sap.ui.localResources('js')
+        sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(), 'parameter');
+      jQuery.sap.registerModulePath('js', './js/');
+      var view = sap.ui.view({id:"idHanaSmartSearchMain", viewName:"js.HanaSmartSearchMain", type:sap.ui.core.mvc.ViewType.JS, height: '100%'});
+      view.placeAt("content");
+        };
+
+
+    </script>
+
+
+  </head>
+
+  <!-- Body section -->
+  <body class="sapUiBody" style="height:100%; width:100%; margin:0px">
+    <div id="content" style="height:100%"></div>
+  </body>
+</html>
